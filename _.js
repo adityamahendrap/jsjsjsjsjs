@@ -1,7 +1,3 @@
-// let str = '0123'
-// console.log(!isNaN(str));
-// console.log(parseInt(str));
-
 var myAtoi = function (s) {
   const str = s.trim();
   if (!isNaN(s)) return s;
@@ -20,16 +16,6 @@ var myAtoi = function (s) {
 
 // console.log(myAtoi("thui 123"));
 // myAtoi("123")
-
-// var detectCapitalUse = function(word) {
-//   let upOrLow = []
-//   for(let i = 0; i < word.length; i++) {
-//     if(word[i] == ' ') upOrLow.push('space')
-//       if(!(word[i].charCodeAt() >= 65 && word[i].charCodeAt() <= 90))
-//           upOrLow.push('low')
-//       else upOrLow.push('up')
-//   }
-// };
 
 var detectCapitalUse = function (word) {
   let subStr = word.split(" ");
@@ -55,27 +41,10 @@ var mergeAlternately = function (word1, word2) {
     newWord = newWord + word1[i] + word2[i];
   }
   newWord = newWord + longest.slice(shortest.length);
-  console.log(newWord);
+  return newWord
 };
 
 // mergeAlternately('abcd', 'pq')
-
-var isHappy = function (n) {
-  let str = n.toString();
-  let temp = 0;
-
-  for (let i = 0; i < str.length; i++) {
-    if (temp == 1) return true;
-    temp += str[i] ** 2;
-
-    if (str[i] == str.length - 1) {
-      str = temp;
-      temp = 0;
-    }
-  }
-};
-
-// console.log(isHappy(19));
 
 var maximumDifference = function(nums) {
   let res = []
@@ -97,7 +66,6 @@ var maximumDifference = function(nums) {
 };
 
 // console.log(maximumDifference([7,1,5,4]));
-
 
 var maxProfit = function(prices) {
   let profit = []
@@ -126,8 +94,8 @@ const maxProfit2 = function(prices) {
 
   return maxProfit;
 };
-// console.log(maxProfit2([7,6,4,3,1]));
 
+// console.log(maxProfit2([7,6,4,3,1]));
 
 var runningSum = function(nums) {
   let arr = []
@@ -168,7 +136,7 @@ var removeDuplicates = function(nums) {
   for (let i = 0; i < lengthOrigin - lengthNow; i++) {
     nums.push('')
   }
-  console.log(nums.length);
+  return nums.length
 };
 
 // removeDuplicates([0,0,1,1,1,2,2,3,3,4])
@@ -192,7 +160,7 @@ var majorityElement = function(nums) {
   let maxCount = Math.max(...countResult)
   let maxIndex = countResult.indexOf(maxCount)
   let majority = uniqueArr[maxIndex]
-  console.log(majority);
+  return majority
 };
 
 // majorityElement([3,2,3])
@@ -241,24 +209,6 @@ var thirdMax = function(nums) {
 
 // thirdMax([2,2,3,1])
 
-var findWords = function(words) {
-  let first_row = "qwertyuiop".split('')
-  let second_row = "asdfghjkl".split('')
-  let third_row = "zxcvbnm".split('')
-  let check_in_row = []
-
-  // words.forEach((word, i)  => {
-  //   if(first_row.includes(words[i][0].toLowerCase())) check_in_row.push(1)
-  //   if(second_row.includes(words[i][0].toLowerCase())) check_in_row.push(2)
-  //   if(third_row.includes(words[i][0].toLowerCase())) check_in_row.push(3)
-  // });
-
-  for (let i = 0; i < words[2].length; i++) {
-  }
-}; 
-
-// findWords(["Hello","Alaska","Dad","Peace"])
-
 var findRelativeRanks = function(score) {
   let sortedScore = score.slice().sort((a, b) => b - a)
   let medals = ['Gold Medal', 'Silver Medal', 'Bronze Medal']
@@ -278,7 +228,6 @@ var findRelativeRanks = function(score) {
 
 // console.log(findRelativeRanks([10,3,8,9,4]));
 
-
 var findNumbers = function(nums) {
   let evenDigit = 0
 
@@ -294,13 +243,13 @@ var findNumbers = function(nums) {
 var mostWordsFound = function(sentences) {
   let maxWord = 0
 
-    for (let i = 0; i < sentences.length; i++) {
-      if(sentences[i].split(' ').length > maxWord) {
-        maxWord = sentences[i].split(' ').length
-      }
+  for (let i = 0; i < sentences.length; i++) {
+    if(sentences[i].split(' ').length > maxWord) {
+      maxWord = sentences[i].split(' ').length
     }
+  }
 
-    return maxWord
+  return maxWord
 };
 
 // mostWordsFound(["please wait", "continue to fight", "continue to win"])
@@ -316,4 +265,262 @@ var findMedianSortedArrays = function(nums1, nums2) {
   return (nums[nums.length / 2 - 1] + nums[nums.length / 2]) / 2
 };
 
-console.log(findMedianSortedArrays([1,2], [3,4]));
+// console.log(findMedianSortedArrays([1,2], [3,4]));
+
+var kidsWithCandies = function(candies, extraCandies) {
+  const max = Math.max(...candies)
+  let withExtraCandies = []
+  let result = []
+
+  for (let i = 0; i < candies.length; i++) {
+    withExtraCandies.push(candies[i] + extraCandies)
+    result.push(withExtraCandies[i] >= max)
+  }
+  return result
+};
+
+// kidsWithCandies([2,3,5,1,3], 3)
+
+var getConcatenation = function(nums) {
+  // const lengthOrigin = nums.length
+  // for (let i = 0; i < lengthOrigin; i++) {
+  //   nums.push(nums[i])
+  // }
+  // return nums
+  return nums.concat(nums)
+};
+
+// getConcatenation([1,2,1])
+
+var buildArray = function(nums) {
+  let ans = []
+
+  for (let i = 0; i < nums.length; i++) {
+    ans[i] = nums[nums[i]]
+  }
+  return ans
+};
+
+// buildArray([0,2,1,5,3,4])
+
+var shuffle = function(nums, n) {
+  let arr1 = nums.slice(0, nums.length/2)
+  let arr2 = nums.slice(nums.length/2, nums.length)
+  let res = []
+
+  for (let i = 0; i < arr1.length; i++) {
+    res.push(arr1[i])
+    res.push(arr2[i])
+  }
+  
+  return res
+};
+
+// shuffle([2,5,1,3,4,7], 3)
+
+var finalValueAfterOperations = function(operations) {
+  let x = 0
+
+  for (let i = 0; i < operations.length; i++) {
+    if(operations[i] == '++X' || operations[i] == 'X++') x++
+    if(operations[i] == '--X' || operations[i] == 'X--') x--
+  }
+
+  return x
+};
+
+// finalValueAfterOperations(["--X","X++","X++"])
+
+var numIdenticalPairs = function(nums) {
+  let pair = 0
+  for (let i = 0; i < nums.length - 1; i++) {
+    for (let j = i+1; j < nums.length; j++) {
+      if(nums[i] == nums[j]) pair++
+    }
+  }
+  return pair
+};
+
+// numIdenticalPairs([1,2,3,1,1,3])
+
+var maximumWealth = function(accounts) {
+  let sum = []
+
+  for (let i = 0; i < accounts.length; i++) {
+    sum.push(accounts[i].reduce((a, b) => a + b, 0))
+  }
+
+  return sum
+};
+
+// maximumWealth([[1,2,3],[3,2,1]])
+
+var smallerNumbersThanCurrent = function(nums) {
+  let smaller = []
+
+  for (let i = 0; i < nums.length; i++) {
+    let temp = nums.filter((num) => num < nums[i])
+    smaller.push(temp.length)
+  }
+
+  return smaller
+};
+
+// smallerNumbersThanCurrent([8,1,2,2,3])
+
+var createTargetArray = function(nums, index) {
+  let target = nums.map(x => '_')
+
+  for (let i = 0; i < nums.length; i++) {
+    target.splice(index[i], 0, nums[i])
+  }
+
+  target.splice(nums.length)
+  return target
+};
+
+// createTargetArray([0,1,2,3,4], [0,1,2,2,1])
+
+var decompressRLElist = function(nums) {
+  let res = []
+
+  for (let i = 0; i < nums.length/2; i++) {
+    let freq = nums[2*i]
+    let value = nums[2*i+1]
+
+    for (let j = 0; j < freq; j++) {
+      res.push(value)
+    }
+  }
+
+  return res
+};
+
+// decompressRLElist([1,2,3,4])
+
+var restoreString = function(s, indices) {
+  let temp = [...indices]
+
+  for (let i = 0; i < s.length; i++) {
+    temp[indices[i]] = s[i]
+  }
+  return temp.join('')
+};
+
+// restoreString("codeleet", [4,5,6,7,0,2,1,3])
+
+var differenceOfSum = function(nums) {
+  const elSum = nums.reduce((a, b) => a + b, 0)
+  let digit = nums.join('').split('')
+  let digitSum = 0
+
+  for (let i = 0; i < digit.length; i++) {
+    digitSum += parseInt(digit[i])
+  }
+  return elSum - digitSum
+};
+
+// differenceOfSum([1,15,6,3])
+
+var arrayStringsAreEqual = function(word1, word2) {
+  if(word1.join('') === word2.join('')) return true
+  return false
+};
+
+// arrayStringsAreEqual(["abc", "d", "defg"], ["abcddefg"])
+
+var countMatches = function(items, ruleKey, ruleValue) {
+  let count = 0
+
+  for (let i = 0; i < items.length; i++) {
+      if(ruleKey == 'type') 
+        count = items[i][0] == ruleValue ? count+1 : count
+      else if(ruleKey == 'color') 
+        count = items[i][1] == ruleValue ? count+1 : count
+      else 
+        count = items[i][2] == ruleValue ? count+1 : count
+  }
+
+  return count
+};
+
+// countMatches([["phone","blue","pixel"],["computer","silver","phone"],["phone","gold","iphone"]], "type", "phone")
+
+var truncateSentence = function(s, k) {
+  return s.split(' ').splice(0, k).join(' ')
+};
+
+// truncateSentence("Hello how are you Contestant", 4)
+
+var checkIfPangram = function(sentence) {
+  let uniq = new Set(sentence.split(''))
+  if(uniq == 26) return true
+  return false
+};
+
+// checkIfPangram("thequickbrownfoxjumpsoverthelazydog")
+
+var vowelStrings = function(words, left, right) {
+  let count = 0
+  for (let i = left; i < right + 1; i++) {
+    if(words[i][0] == 'a' || words[i][0] == 'i' || words[i][0] == 'u' || words[i][0] == 'e' || words[i][0] == 'o') {
+      if(words[i][words[i].length - 1] == 'a' || words[i][words[i].length - 1] == 'i' || words[i][words[i].length - 1] == 'u' || words[i][words[i].length - 1] == 'e' || words[i][words[i].length - 1] == 'o') {
+        count++
+      }
+    }
+  };
+  return count
+};
+
+// vowelStrings(["are","amy","u"], 0, 2)
+
+var flipAndInvertImage = function(image) {
+  for (let i = 0; i < image.length; i++) {
+    image[i].reverse()
+
+    for (let j = 0; j < image[i].length; j++) {
+      if(image[i][j] == 0) {
+        image[i][j] = 1
+      } else {
+        image[i][j] = 0
+      }
+    }
+  }
+  return image
+};
+
+// flipAndInvertImage([[1,1,0],[1,0,1],[0,0,0]])
+
+var uniqueMorseRepresentations = function(words) {
+  let pool = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+  let morseResult = []
+
+  for (let i = 0; i < words.length; i++) {
+    let temp = words[i].split('').map(e => e.charCodeAt(0) - 97).map(e => pool[e]).join('')
+    morseResult.push(temp)
+  }
+
+  let res = new Set([...morseResult])
+  return res.size
+};
+
+// uniqueMorseRepresentations(["gin","zen","gig","msg"])
+
+var separateDigits = function(nums) {
+  return nums.join('').split('')
+};
+
+// separateDigits([13,25,83,77])
+
+var numJewelsInStones = function(jewels, stones) {
+  let count = 0
+
+  for (let j = 0; j < jewels.length; j++) {
+    for (let i = 0; i < stones.length; i++) {
+      if(jewels[j] == stones[i]) count++
+    }
+  }
+  return count
+};
+
+// numJewelsInStones("aA", "aAAbbbb")
